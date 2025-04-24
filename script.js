@@ -4,7 +4,7 @@ document.getElementById('miFormulario').addEventListener("submit", (e) => {
   const texto = tareaInput.value.trim();
   const tareas = JSON.parse(localStorage.getItem("tareas")) || [];
   const id = Date.now().toString();
-  tareas.push({ id, textoTarea: texto });
+  tareas.push({ id, textoTarea: texto, finalizada:false });
   localStorage.setItem("tareas", JSON.stringify(tareas));
   tareaInput.value = "";
   cargarTareas();
@@ -26,6 +26,13 @@ const eliminarTarea = (id) => {
   }
 };
 
+const eliminarTareas = () => {
+  if (localStorage.getItem("tareas")) {
+    localStorage.removeItem("tareas")
+    cargarTareas()
+  }
+}
+
 const cargarTareas = () => {
   if (!localStorage.getItem("tareas")) {
     localStorage.setItem("tareas", JSON.stringify([]));
@@ -33,6 +40,7 @@ const cargarTareas = () => {
 
   const tareas = JSON.parse(localStorage.getItem("tareas"));
   const contenedorTareas = document.getElementById("contenedorTarea");
+  const botonEliminar = document.getElementById("deleteAll")
 
   contenedorTareas.innerHTML = "";
 
@@ -53,16 +61,28 @@ const cargarTareas = () => {
     const action = document.createElement("input");
     action.type = "button";
     action.value = "Eliminar";
-    action.onclick = () => eliminarTarea(tarea.id);
+    action.addEventListener("click", (e) => {
+      e.stopPropagation();
+      eliminarTarea(tarea.id);
+    });
 
     contenedorTarea.addEventListener("click", () => {
+      tarea.finalizada = !tarea.finalizada
       contenedorTarea.classList.toggle("clicked");
+      localStorage.setItem("tareas", JSON.stringify(tareas));
     });
+    tarea.finalizada && contenedorTarea.classList.add("clicked") 
+
 
     contenedorTarea.appendChild(textTarea);
     contenedorTarea.appendChild(action);
     contenedorTareas.appendChild(contenedorTarea);
   });
+  if(tareas.length === 0) {
+    botonEliminar.disabled = true
+  } else {
+    botonEliminar.disabled = false
+  }
 };
 
 

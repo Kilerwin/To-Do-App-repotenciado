@@ -2,6 +2,8 @@ body {
   background-color: #1f2430 !important;
   margin: 0;
   padding: 0;
+  scrollbar-color: #201a40 #313540;
+
 }
 
 .carta-fondo {
@@ -29,7 +31,7 @@ body {
   transform: scale(1.05); 
 }
 
-.tarea input[type="button"] {
+.tarea input[type="button"] , .eliminar {
   background-color: #e74c3c;
   color: white;
   border: none;
@@ -40,12 +42,25 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.tarea input[type="button"]:hover {
+.tarea input[type="button"]:hover , .eliminar:hover {
   background-color: #c0392b; 
 }
 
 .tarea.clicked {
+  background-color: #242038 !important;
+}
+
+.tarea.clicked p {
   text-decoration: line-through;
   font-style: italic;
-  background-color: #242038 !important;
+}
+
+.eliminar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.contenedorTareas {
+  height: 400px;
+  overflow-y: auto;
 }

@@ -15,7 +15,10 @@
         <input type="text" placeholder="Ingresa una nueva tarea" id="tarea" required class="form-control flex-grow-1">
         <input type="submit" value="Añadir Tarea" class="btn btn-primary">
       </form>
-      <div id="contenedorTarea"></div>
+      <div id="contenedorTarea" class="contenedorTareas p-4 mb-2"></div>
+      <div class="d-flex justify-content-center">
+        <input id="deleteAll" type="button" value="Eliminar Todas las tareas" class="eliminar w-100" disabled onclick="eliminarTareas()">
+      </div>
     </section>
   </main>
   <script src="./script.js"></script>
