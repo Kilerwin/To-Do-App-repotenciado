@@ -1,0 +1,51 @@
+body {
+  background-color: #1f2430 !important;
+  margin: 0;
+  padding: 0;
+}
+
+.carta-fondo {
+  background-color: rgba(255, 255, 255, 0.08); 
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); 
+  border-radius: 1rem;
+  backdrop-filter: blur(6px);
+  color: white;
+  padding: 16px;
+}
+
+.tarea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 10px;
+  color: white;
+  transition: transform 0.3s ease-in-out;
+}
+
+.tarea:hover {
+  transform: scale(1.05); 
+}
+
+.tarea input[type="button"] {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.tarea input[type="button"]:hover {
+  background-color: #c0392b; 
+}
+
+.tarea.clicked {
+  text-decoration: line-through;
+  font-style: italic;
+  background-color: #242038 !important;
+}
